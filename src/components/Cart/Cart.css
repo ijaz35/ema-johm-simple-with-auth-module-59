@@ -45,4 +45,6 @@
 .order-btn p,
 .review-btn p {
     margin-right: 5px;
+    text-decoration: none;
+
 }

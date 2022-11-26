@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import useProducts from '../../hooks/useProducts';
 import { addToDb, getStoredCart } from '../../utilities/db'
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
 const Shop = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useProducts();
     const [cart, setCart] = useState([])
 
-    useEffect(() => {
-        fetch('products.JSON')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
+
 
     useEffect(() => {
         const storedCart = getStoredCart();
@@ -54,7 +54,15 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <Cart
-                    cart={cart}></Cart>
+                    cart={cart}>
+                    <Link className="text-decoration" to="/order">
+                        <button className='review-btn'>
+                            <p>Review Order</p>
+                            <FontAwesomeIcon
+                                icon={faArrowRight}></FontAwesomeIcon>
+                        </button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
