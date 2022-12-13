@@ -4,18 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Shipping = () => {
-    const [email, setEmail] = useState('')
+
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [phone, setPhone] = useState('')
     const [user] = useAuthState(auth)
     // const navigate = useNavigate();
 
-
-
-    const handleEmailBlur = (event) => {
-        setEmail(event.target.value)
-    }
     const handleNameBlur = (event) => {
         setName(event.target.value)
     }
@@ -32,7 +27,7 @@ const Shipping = () => {
 
     const handleCreateUser = (event) => {
         event.preventDefault()
-        const shipping = { name, email, address, phone };
+        const shipping = { name, address, phone };
         console.log(shipping)
 
     }
